@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import PropTypes from 'prop-types'
+import HeroForm from './HeroForm'
 
 import {
   withRouter
@@ -48,29 +49,14 @@ class CreateHeroContainer extends Component {
     return (
       <div>
         <h3>Create Hero</h3>
-        <form>
-          <div>
-            <label>Name</label>
-            <input type='text' placeholder='Charater Name' onChange={this.onNameChange} />
-          </div>
-          <div>
-            <label>SuperPower</label>
-            <input type='text' placeholder='Super Power' onChange={this.onSuperPowerChange} />
-          </div>
-          <div>
-            <label>Image</label>
-            <input type='text' placeholder='Image' onChange={this.onImageChange} />
-          </div>
-          <div>
-            <label>Universe</label>
-            <input placeholder='Universe' onChange={this.onUniverseChange} />
-          </div>
-          <div>
-            <label>Nemesis</label>
-            <input placeholder='Nemesis' onChange={this.onNemesisChange} />
-          </div>
-          <button type='button' onClick={this.handleSubmit}>Submit</button>
-        </form>
+        <HeroForm
+          onNameChange={this.onNameChange}
+          onSuperPowerChange={this.onSuperPowerChange}
+          onImageChange={this.onImageChange}
+          onUniverseChange={this.onUniverseChange}
+          onNemesisChange={this.onNemesisChange}
+          handleSubmit={this.handleSubmit}
+        />
       </div>
     )
   }

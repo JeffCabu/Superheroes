@@ -9,7 +9,7 @@ const Heroes = ({heroes}) =>
         return (
           <h4 key={index}>{hero.name}</h4>
         )
-      }, 100)
+      })
     }
   </div>
 
