@@ -21,6 +21,12 @@ const Nav = () =>
     <div>
       <Link to='/create-hero'>Create a Hero</Link>
     </div>
+    <div>
+      <Link to='/villains'>Villains</Link>
+    </div>
+    <div>
+      <Link to='/create-villain'>Create a Villain</Link>
+    </div>
   </nav>
 
 export default Nav

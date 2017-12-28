@@ -1,57 +1,50 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 import PropTypes from 'prop-types'
-import HeroForm from './HeroForm'
-
+import VillainForm from './VillainForm'
 import {
   withRouter
 } from 'react-router-dom'
 
-class CreateHeroContainer extends Component {
+class CreateVillainContainer extends Component {
   state = {
     name: undefined,
-    superPower: undefined,
     img: undefined,
     universe: undefined,
     nemesis: undefined
   }
 
   static propTypes = {
-    loadHeroesFromServer: PropTypes.func.isRequired,
+    loadVillainsFromServer: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired
   }
 
   onNameChange = (e) => this.setState({ name: e.target.value })
-
-  onSuperPowerChange = (e) => this.setState({superPower: e.target.value})
-
   onImageChange = (e) => this.setState({img: e.target.value})
-
   onUniverseChange = (e) => this.setState({universe: e.target.value})
-
   onNemesisChange = (e) => this.setState({nemesis: e.target.value})
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const {name, superPower, img, universe, nemesis} = this.state
-    const hero = {name, superPower, img, universe, nemesis}
+    const {name, img, universe, nemesis} = this.state
+    const villain = {name, img, universe, nemesis}
     $.ajax({
-      url: '/api/heroes',
+      url: '/api/villains',
       method: 'POST',
-      data: hero
+      data: villain
     }).done((response) => {
-      this.props.loadHeroesFromServer()
-      this.props.history.push('/heroes')
+      this.props.loadVillainsFromServer()
+      this.props.history.push('/villains')
     })
   }
 
   render () {
     return (
       <div>
-        <h3>Create Hero</h3>
-        <HeroForm
+        <h3>Create A Villain</h3>
+        <VillainForm
+          heroes={this.props.heroes}
           onNameChange={this.onNameChange}
-          onSuperPowerChange={this.onSuperPowerChange}
           onImageChange={this.onImageChange}
           onUniverseChange={this.onUniverseChange}
           onNemesisChange={this.onNemesisChange}
@@ -62,4 +55,4 @@ class CreateHeroContainer extends Component {
   }
 }
 
-export default withRouter(CreateHeroContainer)
+export default withRouter(CreateVillainContainer)

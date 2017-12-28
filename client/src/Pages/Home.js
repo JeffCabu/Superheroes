@@ -10,7 +10,7 @@ const style = {
 const Home = () => {
   return (
     <div style={style.jumbotron}>
-      <h1>Welcome to the home of Heroes</h1>
+      <h1>Welcome to the home of Heroes and Villains</h1>
     </div>
   )
 }
